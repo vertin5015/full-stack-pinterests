@@ -9,7 +9,6 @@ function PostInteractions() {
         273
         <Image path="/general/share.svg" alt="" />
         <Image path="/general/more.svg" alt="" />
-        
       </div>
       <button>Save</button>
     </div>

@@ -42,6 +42,7 @@
   font-weight: bold;
   cursor: pointer;
 }
+
 .profileButtons button:last-child {
   background-color: #e50829;
   color: white;
