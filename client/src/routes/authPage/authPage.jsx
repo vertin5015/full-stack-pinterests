@@ -4,7 +4,7 @@ import { useState } from "react";
 
 function AuthPage() {
   const [isRegister, setIsRegister] = useState(false);
-  const [error, setError] = useState("");
+  const [ error ] = useState("");
 
   return (
     <div className="authPage">

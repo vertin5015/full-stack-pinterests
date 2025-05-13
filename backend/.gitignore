@@ -1,0 +1,8 @@
+# 忽略 node_modules 文件夹
+node_modules/
+
+# 忽略 .env 环境配置文件
+.env
+
+.DS_Store         # macOS
+Thumbs.db         # Windows

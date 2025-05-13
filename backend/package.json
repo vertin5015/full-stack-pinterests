@@ -1,0 +1,12 @@
+{
+  "main": "index.js",
+  "name": "vertinpin-api",
+  "type": "module",
+  "scripts": {
+    "dev": "node --watch --env-file=.env index.js"
+  },
+  "dependencies": {
+    "express": "^5.1.0",
+    "mongoose": "^8.14.2"
+  }
+}
