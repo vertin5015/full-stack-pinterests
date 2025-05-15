@@ -7,7 +7,7 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
-    userName: {
+    username: {
       type: String,
       required: true,
     },
@@ -16,7 +16,6 @@ const userSchema = new Schema(
     },
     img: {
       type: String,
-      required: true,
     },
     hashedPassword: {
       type: String,
