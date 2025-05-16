@@ -2,9 +2,7 @@ import Pin from "../models/pin.model.js";
 
 export const getPins = async (req, res) => {
   const pageNumber = Number(req.query.cursor) || 0;
-  const search = req.query.search;
-  const userId = req.query.userId;
-  const boardId = req.query.boardId;
+  const { search, userId, boardId } = req.query;
   const LIMIT = 15;
 
   const pins = await Pin.find(

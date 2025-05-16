@@ -17,10 +17,10 @@ function GalleryItem({ item }) {
       <button className="saveButton">Save</button>
       <div className="overlayIcons">
         <button>
-          <img src="/general/share.svg" alt="" />
+          <Image path="/general/share.svg" alt="" />
         </button>
         <button>
-          <img src="/general/more.svg" alt="" />
+          <Image src="/general/more.svg" alt="" />
         </button>
       </div>
     </div>

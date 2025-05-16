@@ -19,7 +19,6 @@ function PostPage() {
   if (error) return "An error has occurred: " + error.message;
 
   if (!data) return "Pin not found";
-  
 
   return (
     <div className="postPage">
@@ -41,7 +40,7 @@ function PostPage() {
             <Image path={data.user.img || "/general/noAvatar.png"} />
             <span>{data.user.displayName}</span>
           </Link>
-          <Comments />
+          <Comments id={data._id} />
         </div>
       </div>
     </div>
