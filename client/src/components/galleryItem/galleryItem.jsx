@@ -12,7 +12,7 @@ function GalleryItem({ item }) {
       style={{ gridRowEnd: `span ${Math.ceil(item.height / 100)}` }}
     >
       {/* <img src={item.media} alt="" /> */}
-      <Image src={item.media} alt="" w={372} h={optimizedHeight} />
+      <Image path={item.media} alt="" w={372} h={optimizedHeight} />
       <Link to={`/pin/${item._id}`} className="overlay" />
       <button className="saveButton">Save</button>
       <div className="overlayIcons">
@@ -20,7 +20,7 @@ function GalleryItem({ item }) {
           <Image path="/general/share.svg" alt="" />
         </button>
         <button>
-          <Image src="/general/more.svg" alt="" />
+          <Image path="/general/more.svg" alt="" />
         </button>
       </div>
     </div>

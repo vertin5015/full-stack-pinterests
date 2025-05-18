@@ -16,8 +16,8 @@ function UserButton() {
       await apiRequest.post("/users/auth/logout", {});
       removeCurrentUser();
       navigate("/auth");
-    } catch (error) {
-      console.log(error);
+    } catch (err) {
+      console.log(err);
     }
   };
 
@@ -29,11 +29,7 @@ function UserButton() {
       </div>
       {open && (
         <div className="userOptions">
-          <Link
-            to={`/profile/${currentUser.username}`}
-            alt=""
-            className="userOption"
-          >
+          <Link to={`/profile/${currentUser.username}`} className="userOption">
             Profile
           </Link>
           <div className="userOption">Setting</div>

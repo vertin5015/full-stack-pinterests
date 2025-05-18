@@ -23,12 +23,12 @@ const pinSchema = new Schema(
       type: String,
       required: true,
     },
-    link: {
-      type: String,
-    },
     board: {
       type: Schema.Types.ObjectId,
       ref: "Board",
+    },
+    link: {
+      type: String,
     },
     tags: {
       type: [String],

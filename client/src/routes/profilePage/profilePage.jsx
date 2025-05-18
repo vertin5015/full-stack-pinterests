@@ -4,12 +4,12 @@ import { useState } from "react";
 import Gallery from "../../components/gallery/gallery";
 import { useQuery } from "@tanstack/react-query";
 import apiRequest from "../../utils/apiRequest";
+import Boards from "../../components/boards/boards";
 import { useParams } from "react-router";
-import Boards from "../../components/Boards/boards";
+import FollowButton from "./followButton";
 
 function ProfilePage() {
   const [type, setType] = useState("saved");
-
   const { username } = useParams();
 
   const { isPending, error, data } = useQuery({
@@ -21,7 +21,7 @@ function ProfilePage() {
 
   if (error) return "An error has occurred: " + error.message;
 
-  if (!data) return "User not found";
+  if (!data) return "User not found!";
 
   return (
     <div className="profilePage">
@@ -34,12 +34,17 @@ function ProfilePage() {
       />
       <h1 className="profileName">{data.displayName}</h1>
       <span className="profileUsername">@{data.username}</span>
-      <div className="followCounts">10 followers · 20 followings</div>
+      <div className="followCounts">
+        {data.followerCount} followers · {data.followingCount} followings
+      </div>
       <div className="profileInteractions">
         <Image path="/general/share.svg" alt="" />
         <div className="profileButtons">
           <button>Message</button>
-          <button>Follow</button>
+          <FollowButton
+            isFollowing={data.isFollowing}
+            username={data.username}
+          />
         </div>
         <Image path="/general/more.svg" alt="" />
       </div>

@@ -1,4 +1,4 @@
-import { Link, useParams } from "react-router";
+import { Link, useParams, useNavigate } from "react-router";
 import Image from "../../components/image/image";
 import PostInteractions from "../../components/postInteractions/postInteractions";
 import "./postPage.css";
@@ -8,6 +8,7 @@ import apiRequest from "../../utils/apiRequest";
 
 function PostPage() {
   const { id } = useParams();
+  const navigate = useNavigate();
 
   const { isPending, error, data } = useQuery({
     queryKey: ["pin", id],
@@ -18,7 +19,9 @@ function PostPage() {
 
   if (error) return "An error has occurred: " + error.message;
 
-  if (!data) return "Pin not found";
+  if (!data) return "Pin not found!";
+
+  console.log(data);
 
   return (
     <div className="postPage">
@@ -27,6 +30,7 @@ function PostPage() {
         viewBox="0 0 24 24"
         width="20"
         style={{ cursor: "pointer" }}
+        onClick={() => navigate("/")}
       >
         <path d="M8.41 4.59a2 2 0 1 1 2.83 2.82L8.66 10H21a2 2 0 0 1 0 4H8.66l2.58 2.59a2 2 0 1 1-2.82 2.82L1 12z"></path>
       </svg>
@@ -35,7 +39,7 @@ function PostPage() {
           <Image path={data.media} alt="" w={735} />
         </div>
         <div className="postDetails">
-          <PostInteractions />
+          <PostInteractions postId={id} />
           <Link to={`/${data.user.username}`} className="postUser">
             <Image path={data.user.img || "/general/noAvatar.png"} />
             <span>{data.user.displayName}</span>

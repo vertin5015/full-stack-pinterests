@@ -48,6 +48,11 @@
   color: white;
 }
 
+.profileButtons button:last-child:disabled {
+  cursor: pointer;
+  opacity: 0.5;
+}
+
 .profileButtons button:last-child:hover {
   background-color: #c1011e;
 }
@@ -61,7 +66,7 @@
 }
 
 .profileOptions span {
-  cursor: pointer;
+  cursor: not-allowed;
   padding: 8px 0px;
 }
 
