@@ -4,7 +4,7 @@ import { useState } from "react";
 import Gallery from "../../components/gallery/gallery";
 import { useQuery } from "@tanstack/react-query";
 import apiRequest from "../../utils/apiRequest";
-import Boards from "../../components/boards/boards";
+import Boards from "../../components/boards/boards.jsx";
 import { useParams } from "react-router";
 import FollowButton from "./followButton";
 
