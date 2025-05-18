@@ -25,7 +25,7 @@ function Boards({ userId }) {
           className="collection"
           key={board._id}
         >
-          <Image path={board.firstPin.media} alt="" />
+          {board.firstPin && <Image path={board.firstPin.media} alt="" />}
           <div className="collectionInfo">
             <h1>{board.title}</h1>
             <span>

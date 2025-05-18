@@ -29,7 +29,7 @@ function UserButton() {
       </div>
       {open && (
         <div className="userOptions">
-          <Link to={`/profile/${currentUser.username}`} className="userOption">
+          <Link to={`/${currentUser.username}`} className="userOption" >
             Profile
           </Link>
           <div className="userOption">Setting</div>
