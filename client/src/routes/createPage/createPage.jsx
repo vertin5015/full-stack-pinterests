@@ -5,6 +5,7 @@ import { useNavigate } from "react-router";
 import { useEffect, useRef, useState } from "react";
 import apiRequest from "../../utils/apiRequest";
 import { useMutation, useQuery } from "@tanstack/react-query";
+import throttle from "lodash/throttle";
 import BoardForm from "./BoardForm";
 
 // 定义添加帖子的异步函数，使用 apiRequest 发送 POST 请求
@@ -17,7 +18,6 @@ const CreatePage = () => {
   const { currentUser } = useAuthStore(); // 获取当前用户信息
   const navigate = useNavigate(); // 用于页面导航
   const formRef = useRef(); // 用于引用表单
-  
 
   const [file, setFile] = useState(null); // 存储上传的文件
   const [previewImg, setPreviewImg] = useState({
@@ -58,18 +58,22 @@ const CreatePage = () => {
     },
   });
 
-  // 处理表单提交
-  const handleSubmit = async () => {
-    const formData = new FormData(formRef.current); // 获取表单数据
-    formData.append("media", file); // 添加上传的图片文件
-    formData.append("newBoard", newBoard); // 添加新建 board 信息
-    mutation.mutate(formData); // 提交数据
-  };
+  const throttledSubmit = throttle(() => {
+    const formData = new FormData(formRef.current);
+    formData.append("media", file);
+    formData.append("newBoard", newBoard);
+    mutation.mutate(formData);
+  }, 2000); // 节流间隔 2 秒
 
   // 获取现有 board 列表
   const { data, isPending, error } = useQuery({
     queryKey: ["formBoards"],
-    queryFn: () => apiRequest.get(`/boards`).then((res) => res.data),
+    queryFn: () => {
+      if (!currentUser?._id) return [];
+      return apiRequest
+        .get(`/boards/${currentUser._id}`)
+        .then((res) => res.data);
+    },
   });
 
   // 切换新建 board 表单的显示状态
@@ -81,7 +85,7 @@ const CreatePage = () => {
     <div className="createPage">
       <div className="createTop">
         <h1>Create Pin</h1>
-        <button onClick={handleSubmit}>Publish</button>
+        <button onClick={throttledSubmit}>Publish</button>
       </div>
       <div className="createBottom">
         {previewImg.url ? (

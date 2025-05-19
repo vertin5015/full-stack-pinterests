@@ -24,6 +24,7 @@ export const registerUser = async (req, res) => {
   res.cookie("token", token, {
     httpOnly: true,
     secure: process.env.NODE_ENV === "production",
+    sameSite: "None",
     maxAge: 30 * 24 * 60 * 60 * 1000,
   });
 
@@ -56,6 +57,7 @@ export const loginUser = async (req, res) => {
   res.cookie("token", token, {
     httpOnly: true,
     secure: process.env.NODE_ENV === "production",
+    sameSite: "None",
     maxAge: 30 * 24 * 60 * 60 * 1000,
   });
 
@@ -124,5 +126,5 @@ export const followUser = async (req, res) => {
     await Follow.create({ follower: req.userId, following: user._id });
   }
 
-  res.status(200).json({ message: "Successful" });
+  res.status(200).json({ message: "Successful!" });
 };
