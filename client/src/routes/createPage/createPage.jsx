@@ -63,7 +63,7 @@ const CreatePage = () => {
     formData.append("media", file);
     formData.append("newBoard", newBoard);
     mutation.mutate(formData);
-  }, 2000); // 节流间隔 2 秒
+  }, 2000); 
 
   // 获取现有 board 列表
   const { data, isPending, error } = useQuery({

@@ -2,7 +2,6 @@ import EmojiPicker from "emoji-picker-react";
 import { useState } from "react";
 import apiRequest from "../../utils/apiRequest";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import axios from "axios";
 
 const addComment = async (comment) => {
   const res = await apiRequest.post("/comments", comment);

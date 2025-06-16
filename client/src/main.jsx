@@ -8,9 +8,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 const HomePage = React.lazy(() => import("./routes/homePage/homePage"));
 const CreatePage = React.lazy(() => import("./routes/createPage/createPage"));
 const PostPage = React.lazy(() => import("./routes/postPage/postPage"));
-const ProfilePage = React.lazy(() =>
-  import("./routes/profilePage/profilePage")
-);
+const ProfilePage = React.lazy(() =>import("./routes/profilePage/profilePage"));
 const SearchPage = React.lazy(() => import("./routes/searchPage/searchPage"));
 const AuthPage = React.lazy(() => import("./routes/authPage/authPage"));
 

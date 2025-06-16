@@ -26,9 +26,8 @@ app.use("/comments", commentRouter);
 app.use("/boards", boardRouter);
 
 app.use((error, req, res, next) => {
-  res.status(error.status || 500);
-
-  res.json({
+  console.error("🔥 ERROR:", error); 
+  res.status(error.status || 500).json({
     message: error.message || "Something went wrong!",
     status: error.status,
     stack: error.stack,

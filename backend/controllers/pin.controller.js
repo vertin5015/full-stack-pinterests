@@ -69,7 +69,6 @@ export const createPin = async (req, res) => {
       folder: "test",
     })
     .then(async (response) => {
-
       let newBoardId;
 
       if (newBoard) {
